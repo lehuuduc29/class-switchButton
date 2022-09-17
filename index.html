@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="on" onclick="switchButton.switchOn()">On</button>
+    <button type="button" id="off" onclick="switchButton.switchOff()">Off</button>
+</body>
+<script>
+    class SwitchButton {
+        constructor() {
+            this.status = true;
+            this.battery = 0;
+        }
+
+        connectToLamp(param) {
+            this.battery = param;
+        }
+
+        switchOn() {
+            if (this.battery > 0 && this.status) {
+                console.log('turn on your lamp')
+                this.status = false;
+            }
+        }
+
+        switchOff() {
+            if (!this.status) {
+                console.log('turn off your lamp')
+                this.status = true;
+            }
+        }
+    }
+
+    class ElectricLamp {
+        constructor(y) {
+            // this.status = true
+            this.energy = y;
+        }
+        setElectric() {
+            if (this.energy > 0) {
+                return this.energy;
+            }
+        }
+    }
+
+
+    let electric = new ElectricLamp(20);
+
+    let switchButton = new SwitchButton();
+    switchButton.connectToLamp(electric.setElectric());
+    
+</script>
+
+</html>
